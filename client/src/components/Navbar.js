@@ -3,31 +3,36 @@ import { Link } from 'react-router-dom';
 
 
 export default class Navbar extends Component {
-  constructor() {
-    super()
 
-    this.state = {
-      loggedIn: false
-    }
+flag = false
+  constructor(props) {
+    super(props)
+    if(props.auth){
+    this.setState({
+      flag : props.auth
+    })
   }
-  componentDidMount() {
+    
+  }
+  
+  // componentDidMount() {
 
-    const user = localStorage.getItem('user')
-    console.log(user)
-    if(user){
-      console.log('yep')
-      this.setState({
-        loggedIn:true,
-      })
-      console.log(this.state.loggedIn)
-    }
+  //   const user = localStorage.getItem('user')
+  //   console.log(user)
+  //   if(user){
+  //     console.log('yep')
+  //     this.setState({
+  //       loggedIn:true,
+  //     })
+  //     console.log(this.state.loggedIn)
+  //   }
    
-}
+//}
 
 
   logOut(e){
     e.preventDefult()
-    localStorage.removeItem('usertoken')
+    localStorage.clear("token")
 
   }
 
@@ -85,7 +90,7 @@ export default class Navbar extends Component {
             </Link>
           </li>
         </ul>
-        {this.loggedIn? userLink : loginRegLink}
+        {this.flag? userLink : loginRegLink}
       </div>
     </nav>
     );

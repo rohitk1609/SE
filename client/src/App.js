@@ -12,12 +12,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 
 export default class App extends Component {
+
+flag = localStorage.getItem("flag");
   render() {
     return (
       <React.Fragment>
           <Router>
         <div className="App">
-          <Navbar />
+          <Navbar  auth={this.flag}/>
           <div className="container">
           <Route path="/" component={Welcome} />
           

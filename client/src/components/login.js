@@ -20,6 +20,7 @@ onSubmit = event => {
           .then(res => {
             if (res.data.user) {
               localStorage.setItem('usertoken',res.data.user)
+              localStorage.setItem('flag',true)
               console.log(localStorage)                
               this.setState({
                 isLoggedin: true,

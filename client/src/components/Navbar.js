@@ -17,9 +17,9 @@ export default class Navbar extends Component {
     if(user){
       console.log('yep')
       this.setState({
-        
-        loggedIn:true
+        loggedIn:true,
       })
+      console.log(this.state.loggedIn)
     }
    
 }

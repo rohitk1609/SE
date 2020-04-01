@@ -20,7 +20,7 @@ export default class App extends Component {
           <Navbar />
           <div className="container">
           <Route path="/" component={Welcome} />
-  
+          
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
           <Route path="/Dashboard" component={Dashboard} />

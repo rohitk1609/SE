@@ -1,6 +1,6 @@
 const User = require("../models/User");
 
-const users = (req, res) => {
+const users = async(req, res) => {
     User.find().then((users) => {
         res.json(users)
     }
@@ -9,7 +9,7 @@ const users = (req, res) => {
     })
 }
 
-const login = (req, res) => {
+const login = async(req, res) => {
     User.findOne({ email: req.body.email })
         .then((user) => {
             if (user) {
@@ -30,7 +30,7 @@ const login = (req, res) => {
 }
     
 
-const register = (req, res) => {
+const register = async(req, res) => {
     User.findOne({ email: req.body.email })
         .then((user) => {
             if (user) {

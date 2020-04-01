@@ -1,17 +1,13 @@
-# MERN Login-Register Application
+#workflow
 
-[See Demo ](https://mern-login-register.now.sh/)
 
 ## Start Application
 
-Open server folder in a new tab in VScode <br />
+#Open server folder
 
-Run
+Run node serve.js
 
-### nodemon server
+#Open client folder 
 
-Open client folder in a new tab in VScode <br />
+Run npm start
 
-Run
-
-### yarn start

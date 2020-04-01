@@ -4,10 +4,7 @@ import React, { Component } from 'react';
 export default class dashboard extends Component {
     state = {
         user: "",
-        name: "",
-        persons: [
-            'email', 'name', 'password'
-        ]
+        
     }
     logOut(e){
         e.preventDefult()
@@ -19,10 +16,9 @@ export default class dashboard extends Component {
     componentDidMount() {
 
         const user = localStorage.getItem('user')
-        const name = localStorage.getItem('name')
+        console.log(user)
         this.setState({
             user: user,
-            name: name
 
         })
     }

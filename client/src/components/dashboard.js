@@ -11,7 +11,7 @@ export default class dashboard extends Component {
     }
     logOut(e){
         e.preventDefult()
-        localStorage.removeItem()
+        localStorage.removeItem('usertoken')
         
     
       }

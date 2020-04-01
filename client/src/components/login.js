@@ -36,17 +36,7 @@ onSubmit = event => {
           });
   }
   
-  componentWillMount() {
-    axios.get('http://localhost:8000/')
-      .then(res => {
-        if (this.state.isLoggedin) {
-          console.log(res.data);
-          let persons = res.data;
-          console.log(persons);
-          this.setState({ persons });
-        } 
-        })
-  }
+
 
   render() {
     if (this.state.isLoggedin) {

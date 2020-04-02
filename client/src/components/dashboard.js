@@ -8,8 +8,9 @@ export default class dashboard extends Component {
     }
     logOut(e){
         e.preventDefult()
+        console.log("yess")
         localStorage.removeItem('usertoken')
-        
+        localStorage.setItem('flag',false)
     
       }
 
@@ -35,7 +36,8 @@ export default class dashboard extends Component {
                         </h1>
                         <br />
                         <br />
-                        <a className="btn btn-danger btn-block" href="/login" onClick={this.logOut.bind(this)}>Logout </a>
+                        <a className="btn btn-danger btn-block" href="/" onClick={this.logOut.bind(this)}>Logout </a>
+                        <a className="btn btn-danger btn-block" href="/form">new form</a>
 
                     </div>
                 </div>

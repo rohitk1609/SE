@@ -4,6 +4,7 @@ import Login from './components/login';
 import Dashboard from './components/dashboard';
 import Register from './components/register';
 import form from './components/form';
+import logout from './components/logout';
 import './App.css';
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Route , Switch } from "react-router-dom";
@@ -32,6 +33,7 @@ state = {
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/Dashboard" component={Dashboard} />
+          <Route exact path="/logout" component={logout} />
                </Switch>
           
           </div>

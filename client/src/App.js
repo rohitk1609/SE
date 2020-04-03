@@ -6,7 +6,7 @@ import Register from './components/register';
 import form from './components/form';
 import './App.css';
 import Navbar from "./components/Navbar";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route , Switch } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 
@@ -26,11 +26,14 @@ state = {
         <div className="App">
           <Navbar  auth={this.flag}/>
           <div className="container">
-          {/* <Route path="/" component={Welcome} /> */}
-          <Route path="/form" component={form} />
-          <Route path="/" component={Login} />
-          <Route path="/register" component={Register} />
-          <Route path="/Dashboard" component={Dashboard} />
+          <Switch>
+          <Route exact path="/" component={Welcome} />
+          <Route exact path="/form" component={form} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/Dashboard" component={Dashboard} />
+               </Switch>
+          
           </div>
         </div>
       </Router>

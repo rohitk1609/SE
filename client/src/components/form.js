@@ -1,6 +1,7 @@
 import $ from "jquery";
 import React, { Component, createRef } from "react";
 import ReactDOM from "react-dom";
+import { Link, withRouter } from 'react-router-dom'
 //import "./styles.css";
 
 window.jQuery = $;
@@ -40,7 +41,7 @@ For my project, the following alternative works:
     require('formBuilder');
 */
 
-export default class FormBuilder extends Component {
+class FormBuilder extends Component {
   fb = createRef();
   componentDidMount() {
     $(this.fb.current).formBuilder({ formData });
@@ -51,4 +52,5 @@ export default class FormBuilder extends Component {
   }
 }
 
+export default withRouter(FormBuilder)
 //ReactDOM.render(<FormBuilder />, document.getElementById("root"));

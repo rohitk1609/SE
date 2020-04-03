@@ -17,18 +17,8 @@ state = {
   flag: false
 }
 
-// componentDidMount() {
-
-//   //const user = localStorage.getItem('user')
-//   this.setState({
-//     flag: localStorage.getItem("flag"),
-//   })
-// }
-
   render() {
     console.log(localStorage)
-    
-    
     console.log(this.flag)
     return (
       <React.Fragment>

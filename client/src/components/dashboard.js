@@ -38,8 +38,8 @@ export default class dashboard extends Component {
                         </h1>
                         <br />
                         <br />
-                        <button className="btn btn-danger btn-block" onClick={this.logOut.bind(this)} >Logout </button>
-                        <a className="btn btn-danger btn-block" href="/">new form</a>
+                        {/* <button className="btn btn-danger btn-block" onClick={this.logOut.bind(this)} >Logout </button> */}
+                        <a className="btn btn-danger btn-block" href="/register">new form</a>
 
                     </div>
                 </div>

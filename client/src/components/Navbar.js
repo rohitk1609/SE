@@ -5,7 +5,8 @@ class Navbar extends Component {
   logOut(e) {
     e.preventDefault()
     localStorage.clear()
-    this.props.history.push(`/`)
+    window.location.href = '/';
+    //this.props.history.push(`/`)
   }
 
   render() {
@@ -32,9 +33,9 @@ class Navbar extends Component {
           </Link>
         </li>
         <li className="nav-item">
-          <a href="" onClick={this.logOut.bind(this)} className="nav-link">
+          <button onClick={this.logOut.bind(this)} className="nav-link">
             Logout
-          </a>
+          </button>
         </li>
       </ul>
     )

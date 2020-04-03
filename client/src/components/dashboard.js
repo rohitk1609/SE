@@ -11,7 +11,7 @@ export default class dashboard extends Component {
         console.log("yess")
         localStorage.clear()
         console.log(localStorage)
-        
+        window.location.href = '/';
         //localStorage.setItem('flag',false)
     
       }
@@ -38,7 +38,7 @@ export default class dashboard extends Component {
                         </h1>
                         <br />
                         <br />
-                        <button className="btn btn-danger btn-block" onClick={this.logOut.bind(this)}>Logout </button>
+                        <button className="btn btn-danger btn-block" onClick={this.logOut.bind(this)} >Logout </button>
                         <a className="btn btn-danger btn-block" href="/">new form</a>
 
                     </div>

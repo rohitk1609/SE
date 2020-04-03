@@ -40,6 +40,7 @@ onSubmit = event => {
 
 
   render() {
+    console.log(this.state.isLoggedin)
     if (this.state.isLoggedin) {
       
       console.log(this.state.user);

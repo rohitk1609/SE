@@ -13,11 +13,23 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 export default class App extends Component {
 
-flag = false
+state = {
+  flag: false
+}
+
+// componentDidMount() {
+
+//   //const user = localStorage.getItem('user')
+//   this.setState({
+//     flag: localStorage.getItem("flag"),
+//   })
+// }
 
   render() {
     console.log(localStorage)
-    this.flag = localStorage.getItem("flag");
+    
+    
+    console.log(this.flag)
     return (
       <React.Fragment>
           <Router>

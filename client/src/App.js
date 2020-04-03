@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import Welcome from './components/welcome';
 import Login from './components/login';
 import Dashboard from './components/dashboard';

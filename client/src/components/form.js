@@ -1,6 +1,6 @@
 import $ from "jquery";
-import React, { Component, createRef } from "react";
-import ReactDOM from "react-dom";
+import React, { Component } from "react";
+//import ReactDOM from "react-dom";
 import { Link, withRouter } from 'react-router-dom'
 //import "./styles.css";
 
@@ -10,17 +10,18 @@ window.$ = $;
 require("jquery-ui-sortable");
 require("formBuilder");
 
-const formData = [
+var formData = [
   {
     type: "header",
     subtype: "h1",
-    label: "formBuilder in React"
+    label: "New Form"
   },
   {
     type: "paragraph",
-    label: "This is a demonstration of formBuilder running in a React project."
+    label: "Start building your form from the options on the right."
   }
 ];
+
 
 /* 
 The order of the imports and requires is very important, especially in the online enviornment.
@@ -42,13 +43,44 @@ For my project, the following alternative works:
 */
 
 class FormBuilder extends Component {
-  fb = createRef();
+  //fb = createRef();
+  formdata1 = formData;
+  state = {
+    formBuilder:'',
+    formarray: []  
+  }
+  
+  //data = localStorage.getItem("form")
   componentDidMount() {
-    $(this.fb.current).formBuilder({ formData });
+    //$(this.fb.current).formBuilder({formData});
+   var fbEditor = document.getElementById('fb-editor');
+   var formBuild = $(fbEditor).formBuilder({formData});
+   this.setState({
+     formBuilder: formBuild
+   })
+  }
+
+  saveform = () => {
+    //$(this.fb.current).formBuilder(options);
+    //this.formData1 = this.fb.actions.getData()
+    //localStorage.setItem("form",this.formData1)
+    console.log((this.state.formBuilder).actions.getData())
+    localStorage.setItem("forms",(this.state.formBuilder).actions.getData())
+    alert("the form is saved")
   }
 
   render() {
-    return <div id="fb-editor" ref={this.fb} />;
+    return (
+    <div>  
+    
+    <div>
+      <button onClick={this.saveform}> export form</button>
+    </div>
+    <div id="fb-editor" />;
+    
+    
+     </div>);
+    
   }
 }
 

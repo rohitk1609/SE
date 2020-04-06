@@ -1,8 +1,7 @@
 import $ from "jquery";
 import React, { Component } from "react";
-//import ReactDOM from "react-dom";
+import axios from 'axios';
 import { Link, withRouter } from 'react-router-dom'
-//import "./styles.css";
 
 window.jQuery = $;
 window.$ = $;
@@ -60,11 +59,34 @@ class FormBuilder extends Component {
    })
   }
 
-  saveform = () => {
+  saveform = (e) => {
+    e.preventDefault();
     //$(this.fb.current).formBuilder(options);
     //this.formData1 = this.fb.actions.getData()
     //localStorage.setItem("form",this.formData1)
-    console.log((this.state.formBuilder).actions.getData('json',true))
+    //console.log((this.state.formBuilder).actions.getData('json',true))
+    const data = (this.state.formBuilder).actions.getData('json',true)
+    console.log(data)
+    axios.post('http://localhost:8000/forms',{data})
+          // .then(res => {
+          //   if (res.data.user) {
+          //     localStorage.setItem('usertoken',res.data.user)
+          //     localStorage.setItem('flag',true)
+          //     localStorage.setItem('form_list',[])
+          //     console.log(localStorage)                
+          //     this.setState({
+          //       isLoggedin: true,
+          //       user: email
+          //     });
+              
+          //   }
+          //   if (res.data.error || res.error) {
+          //       alert(res.data.error,res.error)
+          //     }
+          // })
+          // .catch (error => {
+          // alert(error.response);
+          // });
     alert("the form is saved")
   }
 

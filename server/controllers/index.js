@@ -56,13 +56,9 @@ const register = async(req, res) => {
 const forms = async(req,res) => {
     console.log("mak");
     console.log(req.body);
-    // Form.insert(req.body, function (err, result) {
-    //     if (err)
-    //        res.send('Error');
-    //     else
-    //       res.send('Success');
-  
-    // });
+    Form.create({
+        form : req.body.data
+    })
 }
     
 module.exports = { users, login ,register , forms }

@@ -21,6 +21,7 @@ onSubmit = event => {
             if (res.data.user) {
               localStorage.setItem('usertoken',res.data.user)
               localStorage.setItem('flag',true)
+              localStorage.setItem('form_list',[])
               console.log(localStorage)                
               this.setState({
                 isLoggedin: true,

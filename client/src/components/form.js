@@ -47,7 +47,7 @@ class FormBuilder extends Component {
   formdata1 = formData;
   state = {
     formBuilder:'',
-    formarray: []  
+    formarray: [] 
   }
   
   //data = localStorage.getItem("form")
@@ -64,8 +64,7 @@ class FormBuilder extends Component {
     //$(this.fb.current).formBuilder(options);
     //this.formData1 = this.fb.actions.getData()
     //localStorage.setItem("form",this.formData1)
-    console.log((this.state.formBuilder).actions.getData())
-    localStorage.setItem("forms",(this.state.formBuilder).actions.getData())
+    console.log((this.state.formBuilder).actions.getData('json',true))
     alert("the form is saved")
   }
 

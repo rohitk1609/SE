@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const Form = require("../models/Forms");
 
 const users = async(req, res) => {
     User.find().then((users) => {
@@ -50,5 +51,16 @@ const register = async(req, res) => {
                         res.send(error)
                     });
 }
+
+const forms = async(req,res) => {
+
+    Form.insert(req.body, function (err, result) {
+        if (err)
+           res.send('Error');
+        else
+          res.send('Success');
+  
+    });
+}
     
-module.exports = { users, login ,register }
+module.exports = { users, login ,register , forms }

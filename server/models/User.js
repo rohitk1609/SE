@@ -17,7 +17,8 @@ const UserSchema = new mongoose.Schema({
     required: true,
     unique: false
   }
-},{ versionKey: false },
+},
+{ versionKey: false },
   {
     id: false,
     toObject: {

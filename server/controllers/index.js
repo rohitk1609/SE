@@ -32,6 +32,7 @@ const login = async(req, res) => {
     
 
 const register = async(req, res) => {
+    console.log(req.body);
     User.findOne({ email: req.body.email })
         .then((user) => {
             if (user) {
@@ -53,14 +54,15 @@ const register = async(req, res) => {
 }
 
 const forms = async(req,res) => {
-
-    Form.insert(req.body, function (err, result) {
-        if (err)
-           res.send('Error');
-        else
-          res.send('Success');
+    console.log("mak");
+    console.log(req.body);
+    // Form.insert(req.body, function (err, result) {
+    //     if (err)
+    //        res.send('Error');
+    //     else
+    //       res.send('Success');
   
-    });
+    // });
 }
     
 module.exports = { users, login ,register , forms }

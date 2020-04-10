@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
-import { Link, withRouter } from 'react-router-dom'
+import React, { Component } from "react";
+import { Link, withRouter } from "react-router-dom";
 
 class Navbar extends Component {
   logOut(e) {
-    e.preventDefault()
-    localStorage.clear()
-    window.location.href = '/';
+    e.preventDefault();
+    localStorage.clear();
+    window.location.href = "/";
     //this.props.history.push(`/`)
   }
 
@@ -22,8 +22,15 @@ class Navbar extends Component {
             Register
           </Link>
         </li>
+        <li className="nav-item">
+          <nav pullRight>
+            <Link to="/Admin" className="nav-link">
+              Admin
+            </Link>
+          </nav>
+        </li>
       </ul>
-    )
+    );
 
     const userLink = (
       <ul className="navbar-nav">
@@ -43,7 +50,7 @@ class Navbar extends Component {
           </Link>
         </li>
       </ul>
-    )
+    );
 
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark rounded">
@@ -73,8 +80,8 @@ class Navbar extends Component {
           {localStorage.usertoken ? userLink : loginRegLink}
         </div>
       </nav>
-    )
+    );
   }
 }
 
-export default withRouter(Navbar)
+export default withRouter(Navbar);

@@ -32,25 +32,26 @@ const login = async(req, res) => {
     
 
 const register = async(req, res) => {
-    console.log(req.body);
-    User.findOne({ email: req.body.email })
+    await User.findOne({ email: req.body.email })
         .then((user) => {
             if (user) {
                 return { error: "user already exists" };
             }
             else {
                 User.create({
-                    email: req.body.email, password: req.body.password, name: req.body.name, role: req.body.role
+                    email: req.body.email, password: req.body.password, name: req.body.name, role:req.body.role
                 })
                     .then((users) => {
                         res.json(users)
                     }).catch((error) => {
+                        console.log("asdsd")
                         return { error };
                     });
             }
         }).catch((error) => {
                         res.send(error)
-                    });
+                        console.log("a")
+                    })
 }
 
 const forms = async(req,res) => {

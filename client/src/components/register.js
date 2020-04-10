@@ -9,11 +9,11 @@ export default class Register extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-
     const email = this.refs.email.value;
     const password = this.refs.password.value;
     const name = this.refs.name.value;
-    const role = this.refs.role.value;
+    const role = this.refs.role.value
+    console.log(role)
     axios
       .post("http://localhost:8000/register", { email, password, name, role })
       .then((res) => {
@@ -21,14 +21,16 @@ export default class Register extends Component {
           this.setState({
             isRegistered: true,
           });
+          console.log("as")
         }
       })
       .catch((error) => {
-        return error.response;
+        console.log(error.response);
       });
   };
 
   render() {
+    console.log(this.state.isRegistered)
     if (this.state.isRegistered) {
       alert("Registration Success");
       alert("Please log in to continue");
@@ -60,9 +62,9 @@ export default class Register extends Component {
                 <Form.Label>Password</Form.Label>
                 <Form.Control type="password" ref="password" required />
               </Form.Group>
-              <Form.Group controlId="select.Role">
+              <Form.Group controlId="Role">
                 <Form.Label>Select Role</Form.Label>
-                <Form.Control as="select" ref="role " required>
+                <Form.Control as="select" ref="role" required>
                   <option>Employee</option>
                   <option>Manager</option>
                   <option>CEO</option>

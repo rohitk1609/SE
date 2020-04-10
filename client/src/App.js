@@ -12,6 +12,7 @@ import { BrowserRouter as Router, Route , Switch } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 
+import Workflow from './components/workflow'
 
 export default class App extends Component {
 
@@ -29,6 +30,7 @@ state = {
           <Navbar  auth={this.flag}/>
           <div className="container">
           <Switch>
+          <Route exact path="/workflow" component={Workflow} />
           <Route exact path="/" component={Welcome} />
           <Route exact path="/form" component={form} />
           <Route exact path="/login" component={Login} />

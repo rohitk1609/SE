@@ -79,7 +79,7 @@ class FormBuilder extends Component {
   render() {
     if(this.state.flag === true)
     {
-      return <Redirect to='/formdetails'/>  
+      return <Redirect to='/workflow'/>  
     }
     else {
     return (

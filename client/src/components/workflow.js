@@ -245,7 +245,7 @@ class Workflow extends Component {
                                             id="standard-basic"
                                             select
                                             label="Select"
-                                            value={this.state.role}
+                                            value={this.state.approveuser}
                                             fullWidth
                                             onChange={this.setapproveuser}
                                             helperText="Please select your Users"
@@ -281,7 +281,7 @@ class Workflow extends Component {
                                             id="standard-basic"
                                             select
                                             label="Select"
-                                            value={this.state.role}
+                                            value={this.state.reviewuser}
                                             fullWidth
                                             onChange={this.setreviewuser}
                                             helperText="Please select your Users"

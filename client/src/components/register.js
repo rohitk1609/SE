@@ -43,78 +43,33 @@ export default class Register extends Component {
               <i className="fas fa-user-plus"></i> Register{" "}
             </h1>
             <Form>
-              <Form.Group controlId="exampleForm.ControlInput1">
+              <Form.Group controlId="Email">
                 <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="name@example.com" />
+                <Form.Control
+                  type="email"
+                  ref="email"
+                  placeholder="name@example.com"
+                  required
+                />
               </Form.Group>
-              <Form.Group controlId="exampleForm.ControlSelect1">
-                <Form.Label>Example select</Form.Label>
-                <Form.Control as="select">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
+              <Form.Group controlId="Name">
+                <Form.Label>Name</Form.Label>
+                <Form.Control type="name" ref="name" required />
+              </Form.Group>
+              <Form.Group controlId="Password">
+                <Form.Label>Password</Form.Label>
+                <Form.Control type="password" ref="password" required />
+              </Form.Group>
+              <Form.Group controlId="select.Role">
+                <Form.Label>Select Role</Form.Label>
+                <Form.Control as="select" ref="role " required>
+                  <option>Employee</option>
+                  <option>Manager</option>
+                  <option>CEO</option>
                 </Form.Control>
-              </Form.Group>
-              <Form.Group controlId="exampleForm.ControlSelect2">
-                <Form.Label>Example multiple select</Form.Label>
-                <Form.Control as="select" multiple>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </Form.Control>
-              </Form.Group>
-              <Form.Group controlId="exampleForm.ControlTextarea1">
-                <Form.Label>Example textarea</Form.Label>
-                <Form.Control as="textarea" rows="3" />
               </Form.Group>
             </Form>
             <form onSubmit={this.handleSubmit}>
-              <div className="form-group">
-                <label>Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  ref="email"
-                  className="form-control"
-                  placeholder="Enter Email"
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <label>Name</label>
-                <input
-                  type="name"
-                  id="name"
-                  ref="name"
-                  className="form-control"
-                  placeholder="Enter Name"
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <label>Password</label>
-                <input
-                  type="password"
-                  id="password"
-                  ref="password"
-                  className="form-control"
-                  placeholder="Create Password"
-                  required
-                />
-              </div>
-              <div className="dropdown">
-                <label>Select role </label>
-                <select id="role">
-                  <option value="Employee">Employee</option>
-                  <option value="manager">Manager</option>
-                  <option value="ceo">CEO</option>
-                  required
-                </select>
-              </div>
               <button type="submit" className="btn btn-primary btn-block">
                 Register
               </button>

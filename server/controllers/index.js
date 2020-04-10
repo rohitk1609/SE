@@ -40,7 +40,7 @@ const register = async(req, res) => {
             }
             else {
                 User.create({
-                    email: req.body.email, password: req.body.password, name: req.body.name
+                    email: req.body.email, password: req.body.password, name: req.body.name, role: req.body.role
                 })
                     .then((users) => {
                         res.json(users)

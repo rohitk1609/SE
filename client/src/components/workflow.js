@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { withRouter, Redirect } from 'react-router-dom'
+import axios from 'axios';
 import { Grid, Paper, Button, Container, Typography, TextField } from '@material-ui/core'
 import Header from './worflowheader'
 import FormGroup from '@material-ui/core/FormGroup';
@@ -61,7 +62,7 @@ class Workflow extends Component {
             email: "",
             checkedA: true,
             checkedB: false,
-
+            flag: false,
             approveuser: "",
             reviewuser: "",
             
@@ -212,11 +213,42 @@ class Workflow extends Component {
             workkflow_list: this.state.workkflow_list
         })
     }
-    onsaveworkflow=()=>{
+    onsaveworkflow =(e) => {
+        e.preventDefault();
+        var data = localStorage.getItem("form_temp")
+        console.log(typeof(data))
+        var obj = JSON.parse(data);
+        console.log(obj)
+        var title = obj[0].label;
+        console.log(typeof(this.state.workkflow_list))
+        var list = JSON.stringify(this.state.workkflow_list)
+        axios.post('http://localhost:8000/forms',{name : title, form : data, roles : list})
+          .then(res => {
+            console.log(res);
+            if (res.data.error) {
+              alert("form already exists")
+            }
+            if (res.data.out) {
+              alert("sucess");
+            }
+          }
+          )
+          .catch (error => {
+          alert(error.response);
+          });
+    alert("the form is saved")
+    this.setState({
+        flag: true
+    })
+
         
     }
     render() {
-
+        if(this.state.flag)
+        {
+            return <Redirect to="/dashboard"/>
+        }
+        else{
         return (
             <Fragment>
                 <Header />
@@ -504,6 +536,7 @@ class Workflow extends Component {
 
             </Fragment>
         )
+        }
     }
 
 }

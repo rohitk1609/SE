@@ -57,14 +57,14 @@ const register = async(req, res) => {
 const forms = async(req,res) => {
     console.log("mak");
     console.log(req.body);
-    Form.findOne({ form: req.body.data })
+    Form.findOne({ form: req.body.name })
         .then((form) => {
             if (form) {
                 return { error: "form already exists" };
             }
             else {
                 Form.create({
-                    form: req.body.data
+                    name: req.body.name, form: req.body.form , roles: req.body.roles
                 })
                     .then((forms) => {
                         return { out : "sucess"};

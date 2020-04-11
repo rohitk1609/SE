@@ -12,8 +12,8 @@ const formSchema = new mongoose.Schema({
             required: true
       },
       roles: {
-        type: {type: String},
-        value: [String]
+        type: String,
+        required: true
       }
 
     }

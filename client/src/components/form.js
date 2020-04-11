@@ -45,6 +45,8 @@ class FormBuilder extends Component {
     e.preventDefault();
     var data = (this.state.formBuilder).actions.getData()
     console.log(data)
+    data = JSON.stringify(data)
+    console.log(data)
     localStorage.setItem("form_temp",data);
     this.setState({
       flag : true

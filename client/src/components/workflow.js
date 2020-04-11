@@ -494,6 +494,10 @@ class Workflow extends Component {
 
                     </Grid>
                 </div>
+                <div>
+                   <Button variant ="contained" color="primary" size="large" fullWidth onClick={this.onsaveworkflow}>Save Workflow</Button>
+
+                </div>
 
             </Fragment>
         )

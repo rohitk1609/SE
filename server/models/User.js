@@ -22,7 +22,12 @@ const UserSchema = new mongoose.Schema({
     type: String,
     default: 'CEO',
     enum: ["Employee", "Manager", "CEO"]
+   },
+   forms: {
+     type: {type: String},
+     value: [String]
    }
+
 },
 { versionKey: false },
   {

@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter,Redirect } from 'react-router-dom'
 
-
-
 class FormDetails extends Component {
 
   constructor() {
@@ -69,5 +67,8 @@ class FormDetails extends Component {
     )  
   }
 }
+
+
+
 
 export default withRouter(FormDetails)

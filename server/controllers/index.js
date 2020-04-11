@@ -64,7 +64,7 @@ const forms = async(req,res) => {
             }
             else {
                 Form.create({
-                    name: req.body.name, form: req.body.form , roles: req.body.roles
+                    name: req.body.name, form: req.body.form , roles: req.body.roles , access: req.body.access
                 })
                     .then((forms) => {
                         return { out : "sucess"};

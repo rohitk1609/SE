@@ -14,6 +14,10 @@ const formSchema = new mongoose.Schema({
       roles: {
         type: String,
         required: true
+      },
+      access: {
+        type: String,
+        required: true
       }
 
     }

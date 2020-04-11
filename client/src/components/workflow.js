@@ -222,7 +222,8 @@ class Workflow extends Component {
         var title = obj[0].label;
         console.log(typeof(this.state.workkflow_list))
         var list = JSON.stringify(this.state.workkflow_list)
-        axios.post('http://localhost:8000/forms',{name : title, form : data, roles : list})
+        var userlist = JSON.stringify(this.state.useraccesslist)
+        axios.post('http://localhost:8000/forms',{name : title, form : data, roles : list,access : userlist})
           .then(res => {
             console.log(res);
             if (res.data.error) {

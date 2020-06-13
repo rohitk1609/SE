@@ -2,43 +2,34 @@ const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
 
 const formSchema = new mongoose.Schema({
-    name: {
-      type: String,
-      unique: true,
-      required: true,
+  name: {
+    type: String,
+    unique: true,
+    required: true,
+  },
+  form:{},
+  workflow: [],
+  access: []
+
+}
+  ,
+  { versionKey: false },
+  {
+    id: false,
+    toObject: {
+      virtuals: true,
+      getters: true
     },
-    form: {
-        type: String,
-            required: true
-      },
-      roles: {
-        type: String,
-        required: true
-      },
-      access: {
-        type: String,
-        required: true
-      }
+    toJSON: {
 
+
+      virtuals: true,
+      getters: true,
+      setters: false
     }
-    ,
-    { versionKey: false },
-      {
-        id: false,
-        toObject: {
-          virtuals: true,
-          getters: true
-        },
-        toJSON: {
-    
-    
-          virtuals: true,
-          getters: true,
-          setters: false
-        }
-    });
+  });
 
 
-const Form = mongoose.model('Form',formSchema);
+const Form = mongoose.model('Form', formSchema);
 
 module.exports = Form;

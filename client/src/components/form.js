@@ -44,9 +44,9 @@ class FormBuilder extends Component {
   saveforward = (e) => {
     e.preventDefault();
     var data = (this.state.formBuilder).actions.getData()
-    console.log(data)
+    //console.log(data)
     data = JSON.stringify(data)
-    console.log(data)
+    //console.log(data)
     localStorage.setItem("form_temp",data);
     this.setState({
       flag : true

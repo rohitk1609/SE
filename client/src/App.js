@@ -6,6 +6,7 @@ import Register from './components/register';
 import form from './components/form';
 import formdetails from './components/form_req';
 import logout from './components/logout';
+import Float from './components/float'
 import './App.css';
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Route , Switch } from "react-router-dom";
@@ -22,7 +23,7 @@ state = {
 
   render() {
     console.log(localStorage)
-    console.log(this.flag)
+    console.log(this.flag)  
     return (
       <React.Fragment>
           <Router>
@@ -38,6 +39,7 @@ state = {
           <Route exact path="/Dashboard" component={Dashboard} />
           <Route exact path="/formdetails" component={formdetails}/>
           <Route exact path="/logout" component={logout} />
+          <Route exact path="/float" component={Float} />
                </Switch>
           
           </div>

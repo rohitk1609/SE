@@ -56,7 +56,7 @@ class Workflow extends Component {
             role: "CEO",
             save: false,
             ApprovalDialog: false,
-            ReviewDialog: false,
+            ForwardDialog: false,
             change: false,
             useraccesslist: [],
             email: "",
@@ -64,7 +64,7 @@ class Workflow extends Component {
             checkedB: false,
             flag: false,
             approveuser: "",
-            reviewuser: "",
+            forwarduser: "",
             
         }
     }
@@ -137,7 +137,7 @@ class Workflow extends Component {
     addemail = () => {
         this.ID = this.ID + 1;
         this.state.useraccesslist.push({
-            id: this.ID,
+        
             role: this.state.role
         })
         this.setState({
@@ -187,29 +187,29 @@ class Workflow extends Component {
             workkflow_list: this.state.workkflow_list
         })
     }
-    handleClickReview = () => {
+    handleClickForward = () => {
         this.setState({
-            ReviewDialog: true
+            ForwardDialog: true
         })
     }
-    handleReviewClose = () => {
+    handleForwardClose = () => {
         this.setState({
-            ReviewDialog: false
+            ForwardDialog: false
         })
     }
-    setreviewuser = (e) => {
+    setforwarduser = (e) => {
         this.setState({
-            reviewuser: e.target.value
+            forwarduser: e.target.value
         })
     }
 
-    Reviewactionadd = () => {
+    Forwardactionadd = () => {
         this.state.workkflow_list.push({
             id: 0,
-            user: this.state.reviewuser
+            user: this.state.forwarduser
         })
         this.setState({
-            ReviewDialog: false,
+            ForwardDialog: false,
             workkflow_list: this.state.workkflow_list
         })
     }
@@ -218,12 +218,20 @@ class Workflow extends Component {
         var data = localStorage.getItem("form_temp")
         console.log(typeof(data))
         var obj = JSON.parse(data);
-        console.log(obj)
+        //console.log(obj)
         var title = obj[0].label;
-        console.log(typeof(this.state.workkflow_list))
-        var list = JSON.stringify(this.state.workkflow_list)
-        var userlist = JSON.stringify(this.state.useraccesslist)
-        axios.post('http://localhost:8000/forms',{name : title, form : data, roles : list,access : userlist})
+        console.log("title",title);
+        console.log('workflow is ',this.state.workkflow_list)
+
+        //var list = JSON.stringify(this.state.workkflow_list)
+        //var userlist = JSON.stringify(this.state.useraccesslist)
+        var obj1= {
+            name:title,
+            form:obj,
+            roles:this.state.workkflow_list,
+            access:this.state.useraccesslist,
+        }
+        axios.post('http://localhost:8000/forms',obj1)
           .then(res => {
             console.log(res);
             if (res.data.error) {
@@ -304,9 +312,9 @@ class Workflow extends Component {
                                     </DialogActions>
                                 </Dialog>
                                 <br />
-                                <Button style={{ height: 40, margin: 20 }} variant="outlined" color="primary" onClick={this.handleClickReview}>Add your Comment Action </Button>
-                                <Dialog open={this.state.ReviewDialog} onClose={this.handleReviewClose} aria-labelledby="form-dialog-title">
-                                    <DialogTitle id="form-dialog-title">Who can Review</DialogTitle>
+                                <Button style={{ height: 40, margin: 20 }} variant="outlined" color="primary" onClick={this.handleClickForward}>Add your Forward Action </Button>
+                                <Dialog open={this.state.ForwardDialog} onClose={this.handleForwardClose} aria-labelledby="form-dialog-title">
+                                    <DialogTitle id="form-dialog-title">Who can Reject</DialogTitle>
                                     <DialogContent>
                                         <DialogContentText>
                                             The Selected User is added in the Review sequence List. You can Either Remove or add Users for the
@@ -317,9 +325,9 @@ class Workflow extends Component {
                                             id="standard-basic"
                                             select
                                             label="Select"
-                                            value={this.state.reviewuser}
+                                            value={this.state.forwardser}
                                             fullWidth
-                                            onChange={this.setreviewuser}
+                                            onChange={this.setforwarduser}
                                             helperText="Please select your Users"
                                             required>
                                             {roles.map((option) => (
@@ -331,10 +339,10 @@ class Workflow extends Component {
                                         </TextField>
                                     </DialogContent>
                                     <DialogActions>
-                                        <Button onClick={this.handleReviewClose} color="primary">
+                                        <Button onClick={this.handleForwardClose} color="primary">
                                             Cancel
                                                 </Button>
-                                        <Button onClick={this.Reviewactionadd} color="primary">
+                                        <Button onClick={this.Forwardactionadd} color="primary">
                                             Done
                                                 </Button>
                                     </DialogActions>
@@ -352,7 +360,7 @@ class Workflow extends Component {
                                         
                                                 }
                                                 else {
-                                                    this.actionname="Review Action"
+                                                    this.actionname="Forward Action"
                                                 }
                                                 return (
                                                     <Grid Container>
@@ -416,7 +424,7 @@ class Workflow extends Component {
                                             label="All users"
                                         />
                                         <FormControlLabel
-                                            control={
+                                            control={   
                                                 <Checkbox
                                                     checked={this.state.checkedB}
                                                     onChange={this.handleChangeB}

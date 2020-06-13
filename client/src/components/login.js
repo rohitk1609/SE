@@ -19,7 +19,9 @@ export default class login extends Component {
       .post("http://localhost:8000/login", { email, password })
       .then((res) => {
         if (res.data.user) {
+          console.log(res.data.user.role,"hurray")
           localStorage.setItem("usertoken", res.data.user);
+          localStorage.setItem("role",res.data.user.role)
           localStorage.setItem("flag", true);
           localStorage.setItem("form_list", []);
           console.log(localStorage);

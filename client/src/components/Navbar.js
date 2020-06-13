@@ -45,6 +45,11 @@ class Navbar extends Component {
           </Link>
         </li>
         <li className="nav-item">
+          <Link to="/float" className="nav-link">
+            Float
+          </Link>
+        </li>
+        <li className="nav-item">
           <Link to="/logout" className="nav-link">
             Logout
           </Link>

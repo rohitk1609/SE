@@ -26,7 +26,14 @@ const UserSchema = new mongoose.Schema({
    forms: {
      type: {type: String},
      value: [String]
-   }
+   },
+   intickets : [{
+    ticketId: { type: mongoose.Schema.Types.ObjectId }
+   }],
+   outtickets : [{
+    ticketId: { type: mongoose.Schema.Types.ObjectId }
+  }]
+
 
 },
 { versionKey: false },

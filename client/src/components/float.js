@@ -10,6 +10,13 @@ export default class float extends Component {
         this.getlist();
 
     }
+
+    floating(a){
+        //e.preventDefault();
+        console.log("into");
+        console.log(a);
+    }
+
     getlist=()=>{
         var role = localStorage.getItem("role")
 
@@ -38,7 +45,7 @@ export default class float extends Component {
                         <Typography>{list.name}</Typography>
                     </Grid>
                     <Grid item xs={6}>
-                        <Button color="secondary">float</Button>
+                        <Button color="secondary" onClick={this.floating(list)}>float</Button>
                     </Grid>
                 </Grid>
             </div>

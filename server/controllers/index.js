@@ -34,13 +34,13 @@ const login = async (req, res) => {
 const float = async (req, res) => {
 
     console.log(req.body)
-    await Form.find({"access.role":"CEO"}).then((err, float) => {
+    await Form.find().then((float, err) => {
 
         console.log("aaaaaaaaaaaaaaaaaaa", float)
         //res.json(float);
 
-        if (err) {
-            res.send(err);
+        if (float) {
+            res.send(float);
         }
     })
 }

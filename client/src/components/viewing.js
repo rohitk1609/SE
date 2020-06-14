@@ -9,15 +9,14 @@ window.$ = $;
 
 require("jquery-ui-sortable");
 require("formBuilder");
-require('formBuilder/dist/form-render.min.js')
-
-
+require('formBuilder/dist/form-render.min.js');
 
 
 export default class FormBuilder extends Component {
   //fb = createRef();
   //formdata1 = formData;
   state = {
+    userdata:[],
     formData:'',
     formBuilder:'',
     formarray: [] ,
@@ -75,6 +74,21 @@ export default class FormBuilder extends Component {
   }
 
   render() {
+    var list = JSON.parse(localStorage.getItem("form_view")).workflow;
+    axios.get('http://localhost:8000/getusers',{data:list[0].user})
+          .then(res => {
+            console.log(res);
+            if (res.data.error) {
+              alert("form already exists")
+            }
+            if (res.data.out) {
+              alert("sucess");
+            }
+          }
+          )
+          .catch (error => {
+          alert(error.response);
+          });
     if(this.state.flag === true)
     {
       return <Redirect to='/workflow'/>  
@@ -87,6 +101,19 @@ export default class FormBuilder extends Component {
     <div id="fb-editor" />;
 
     <div>
+    <TextField
+        id="standard-basic"
+        select
+        label="Select"
+        helperText="Please select your Users"
+        required>
+        {roles.map((option) => (
+            <MenuItem key={option.role} value={option.role}>
+                {option.role}
+            </MenuItem>
+        ))}
+      </TextField>
+        
       <Button variant="contained" color="secondary" onClick={this.saveforward}>Save and Forward</Button>
     </div>
     

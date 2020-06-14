@@ -34,7 +34,7 @@ const login = async (req, res) => {
 const float = async (req, res) => {
 
     console.log(req.body)
-    await Form.find().then((float, err) => {
+    await Form.find({"access.role":"CEO"}).then((float, err) => {
 
         console.log("aaaaaaaaaaaaaaaaaaa", float)
         //res.json(float);
@@ -44,6 +44,22 @@ const float = async (req, res) => {
         }
     })
 }
+
+const getusers = async (req, res) => {
+
+    console.log(req.body.data)
+    await User.find({"access.role":req.body.data}).then((float, err) => {
+
+        console.log("aaaaaaaaaaaaaaaaaaa", float)
+        //res.json(float);
+
+        if (float) {
+            res.send(float);
+        }
+    })
+}
+
+
 const register = async (req, res) => {
     await User.findOne({ email: req.body.email })
         .then((user) => {
@@ -90,4 +106,4 @@ const forms = async (req, res) => {
         });
 }
 
-module.exports = { users, login, register, forms, float }
+module.exports = { users, login, register, forms, float, getusers }

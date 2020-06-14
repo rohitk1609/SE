@@ -20,8 +20,7 @@ const UserSchema = new mongoose.Schema({
   ,
   role: {
     type: String,
-    default: 'CEO',
-    enum: ["Employee", "Manager", "CEO"]
+    required: true
    },
    forms: {
      type: {type: String},

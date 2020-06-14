@@ -30,6 +30,10 @@ const ticketSchema = new mongoose.Schema({
       close: {
           type: Boolean,
           required: true
+      },
+      result: {
+        type: Boolean,
+        required = false
       }
     }
     ,

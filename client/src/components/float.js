@@ -1,20 +1,27 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { withRouter,Redirect } from 'react-router-dom'
 import { Grid, Paper, Button, Container, Typography, TextField, Card, CardContent } from '@material-ui/core'
 export default class float extends Component {
 
     state = {
         floatformlist: [],
+        flag: false
     }
     componentDidMount() {
         this.getlist();
 
     }
 
-    floating(a){
+    floating=(a)=>{
         //e.preventDefault();
         console.log("into");
         console.log(a);
+        var data = JSON.stringify(a);
+        localStorage.setItem("form_view",data);
+        this.setState({
+            flag:true
+        })
     }
 
     getlist=()=>{
@@ -45,13 +52,18 @@ export default class float extends Component {
                         <Typography>{list.name}</Typography>
                     </Grid>
                     <Grid item xs={6}>
-                        <Button color="secondary" onClick={this.floating(list)}>float</Button>
+                        <Button color="secondary" onClick={this.floating.bind(this,list)}>float</Button>
                     </Grid>
                 </Grid>
             </div>
         ))
     }
     render() {
+        if(this.state.flag === true)
+    {
+      return <Redirect to='/viewing'/>  
+    }
+    else {
         return (
             <Container>
                 <div>
@@ -66,4 +78,5 @@ export default class float extends Component {
             </Container>
         )
     }
+}
 }

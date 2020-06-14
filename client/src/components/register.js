@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import { Form } from "react-bootstrap";
+import roles from '../roles.json'
 export default class Register extends Component {
   state = {
     isRegistered: false,
@@ -65,9 +66,13 @@ export default class Register extends Component {
               <Form.Group controlId="Role">
                 <Form.Label>Select Role</Form.Label>
                 <Form.Control as="select" ref="role" required>
-                  <option>Employee</option>
-                  <option>Manager</option>
-                  <option>CEO</option>
+                  {
+                    roles.map(role=>{
+                      return(
+                      <option>{role.title}</option>
+                      )
+                    })
+                  }
                 </Form.Control>
               </Form.Group>
             </Form>

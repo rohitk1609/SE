@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "title": "CEO"
+    },
+    {
+        "id": 2,
+        "title": "COO"
+    },
+    {
+        "id": 3,
+        "title": "Product Manager"
+    },
+    {
+        "id": 4,
+        "title": "Software Developer"
+    },
+    {
+        "id": 5,
+        "title": "Analyst"
+    },
+    {
+        "id": 6,
+        "title": "Accountant"
+    },
+    {
+        "id": 7,
+        "title": "Employee"
+    }
+]

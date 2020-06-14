@@ -3,7 +3,8 @@ import React, { Component } from "react";
 import axios from 'axios';
 import { withRouter,Redirect } from 'react-router-dom'
 import { Grid, Paper, Button, Container, Typography, TextField, Card, CardContent } from '@material-ui/core'
-
+import roles from '../roles.json'
+import MenuItem from '@material-ui/core/MenuItem';
 window.jQuery = $;
 window.$ = $;
 
@@ -108,8 +109,8 @@ export default class FormBuilder extends Component {
         helperText="Please select your Users"
         required>
         {roles.map((option) => (
-            <MenuItem key={option.role} value={option.role}>
-                {option.role}
+            <MenuItem key={option.title} value={option.title}>
+                {option.title}
             </MenuItem>
         ))}
       </TextField>

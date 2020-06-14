@@ -33,7 +33,7 @@ const ticketSchema = new mongoose.Schema({
       },
       result: {
         type: Boolean,
-        required = false
+        
       }
     }
     ,

@@ -16,30 +16,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import PropTypes from 'prop-types';
 import MenuItem from '@material-ui/core/MenuItem';
-const roles = [
-    {
-        role: 'CEO',
-    },
-    {
-        role: 'COO',
-    },
-    {
-        role: 'Office Manager',
-    },
-    {
-        role: 'Marketing Manager',
-    },
-    {
-        role: 'Accountant',
-    },
-    {
-        role: 'Receptionist',
-    },
-    {
-        role: 'Software Developer',
-    },
-
-]
+import roles from '../roles.json'
 
 
 class Workflow extends Component {
@@ -295,8 +272,8 @@ class Workflow extends Component {
                                             helperText="Please select your Users"
                                             required>
                                             {roles.map((option) => (
-                                                <MenuItem key={option.role} value={option.role}>
-                                                    {option.role}
+                                                <MenuItem key={option.title} value={option.title}>
+                                                    {option.title}
                                                 </MenuItem>
                                             ))}
 
@@ -331,8 +308,8 @@ class Workflow extends Component {
                                             helperText="Please select your Users"
                                             required>
                                             {roles.map((option) => (
-                                                <MenuItem key={option.role} value={option.role}>
-                                                    {option.role}
+                                                <MenuItem key={option.title} value={option.title}>
+                                                    {option.title}
                                                 </MenuItem>
                                             ))}
 
@@ -490,8 +467,8 @@ class Workflow extends Component {
                                                                     helperText="Please select your Users"
                                                                     required>
                                                                     {roles.map((option) => (
-                                                                        <MenuItem key={option.role} value={option.role}>
-                                                                            {option.role}
+                                                                        <MenuItem key={option.title} value={option.title}>
+                                                                            {option.title}
                                                                         </MenuItem>
                                                                     ))}
 

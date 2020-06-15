@@ -26,13 +26,14 @@ export default class float extends Component {
 
     getlist=()=>{
         var role = localStorage.getItem("role")
-
+        console.log(role)
         
-        var obj = {
-            role: role
-        }
+        // var obj = {
+        //     role: role
+        // }
+        // console.log(obj);
 
-        axios.get("http://localhost:8000/float", obj).then(result => {
+        axios.get("http://localhost:8000/float", {params:{in:role}}).then(result => {
 
             this.setState({
                 floatformlist: result.data,

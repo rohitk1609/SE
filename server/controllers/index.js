@@ -33,10 +33,10 @@ const login = async (req, res) => {
 
 const float = async (req, res) => {
 
-    console.log(req.body)
-    await Form.find({"access.role":"CEO"}).then((float, err) => {
+    console.log(req.query.in)
+    await Form.find({$or:[{"access.role":req.query.in},{"access":{$size:0}}]}).then((float, err) => {
 
-        console.log("aaaaaaaaaaaaaaaaaaa", float)
+        //console.log("aaaaaaaaaaaaaaaaaaa", float)
         //res.json(float);
 
         if (float) {
@@ -47,8 +47,8 @@ const float = async (req, res) => {
 
 const getusers = async (req, res) => {
 
-    console.log(req.body.data)
-    await User.find({"access.role":req.body.data}).then((float, err) => {
+    console.log(req.query)
+    await User.find({"role":req.query.in}).then((float, err) => {
 
         console.log("aaaaaaaaaaaaaaaaaaa", float)
         //res.json(float);

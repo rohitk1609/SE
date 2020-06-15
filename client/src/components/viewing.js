@@ -17,6 +17,7 @@ export default class FormBuilder extends Component {
   //fb = createRef();
   //formdata1 = formData;
   state = {
+    selecteduser:'',
     userdata:[],
     formData:'',
     formBuilder:'',
@@ -25,36 +26,34 @@ export default class FormBuilder extends Component {
   }
   
   //data = localStorage.getItem("form")
-  componentDidMount() {
+  componentDidMount = async ()=>{
     var formData = JSON.parse(localStorage.getItem("form_view")).form;
     //$(this.fb.current).formBuilder({formData});
    var fbEditor = document.getElementById('fb-editor');
    var formBuild = $(fbEditor).formRender({formData});
+   this.getlist()
    this.setState({
      formData : formData,
      formBuilder: formBuild
    })
+
+   
+
   }
 
+  //this functions gets the user filled data and sends to the backend,
+  //to create the ticket.
   saveforward = (e) => {
     e.preventDefault();
     console.log(this.state.formBuilder.userData);
-    // var data = (this.state.formBuilder).actions.getData()
-    // //console.log(data)
-    // data = JSON.stringify(data)
-    // //console.log(data)
-    // localStorage.setItem("form_temp",data);
-    // this.setState({
-    //   flag : true
-    // })
+    var info = {
+      form_data: this.state.formBuilder.userData,
+      target: this.state.selecteduser
+    }
   }
 
   saveform = (e) => {
     e.preventDefault();
-    //$(this.fb.current).formBuilder(options);
-    //this.formData1 = this.fb.actions.getData()
-    //localStorage.setItem("form",this.formData1)
-    //console.log((this.state.formBuilder).actions.getData('json',true))
     const data = (this.state.formBuilder).actions.getData('json',true)
     console.log(data)
     axios.post('http://localhost:8000/forms',{data})
@@ -74,27 +73,47 @@ export default class FormBuilder extends Component {
     alert("the form is saved")
   }
 
-  render() {
+  getlist = () => {
     var list = JSON.parse(localStorage.getItem("form_view")).workflow;
-    axios.get('http://localhost:8000/getusers',{data:list[0].user})
+    console.log(list[0].user);
+    var final_list;
+    axios.get('http://localhost:8000/getusers',{params:{in:list[0].user}})
           .then(res => {
-            console.log(res);
-            if (res.data.error) {
-              alert("form already exists")
-            }
-            if (res.data.out) {
-              alert("sucess");
-            }
+            console.log(res.data);
+              final_list=res.data;
+              console.log("users",final_list)
+          this.setState({
+            userdata:final_list
+          })
           }
           )
           .catch (error => {
           alert(error.response);
           });
-    if(this.state.flag === true)
+          
+  }
+  setapproveuser=(e)=>{
+
+    console.log(e.target.value)
+    this.setState({
+      selecteduser:e.target.value
+    })
+
+  }
+
+  render() {
+    
+    //console.log(this.state.userdata)
+    if(!this.state.userdata.length)
     {
-      return <Redirect to='/workflow'/>  
+      return (
+        <div>  
+        <div id="fb-editor" />
+        </div>
+      );
     }
-    else {
+    else
+    {
     return (
     <div>  
     
@@ -107,10 +126,11 @@ export default class FormBuilder extends Component {
         select
         label="Select"
         helperText="Please select your Users"
+        onChange={this.setapproveuser}
         required>
-        {roles.map((option) => (
-            <MenuItem key={option.title} value={option.title}>
-                {option.title}
+        {this.state.userdata.map((option) => (
+            <MenuItem key={option.email} value={option.email}>
+                {option.email}
             </MenuItem>
         ))}
       </TextField>

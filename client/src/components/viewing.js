@@ -46,10 +46,25 @@ export default class FormBuilder extends Component {
   saveforward = (e) => {
     e.preventDefault();
     console.log(this.state.formBuilder.userData);
+    var form_obj = JSON.parse(localStorage.getItem("form_view"))
+    form_obj.form = this.state.formBuilder.userData
+    console.log(form_obj)
     var info = {
-      form_data: this.state.formBuilder.userData,
+      user: localStorage.getItem("user"),
+      form_data: form_obj,
       target: this.state.selecteduser
     }
+    axios.post('http://localhost:8000/forms',{info})
+          .then(res => {
+            console.log(res);
+            this.setState({
+              flag: true
+            })
+          }
+          )
+          .catch (error => {
+          alert(error.response);
+          });
   }
 
   saveform = (e) => {
@@ -102,6 +117,11 @@ export default class FormBuilder extends Component {
   }
 
   render() {
+
+    if(this.state.flag === true)
+    {
+      return <Redirect to='/dashboard'/> 
+    }
     
     //console.log(this.state.userdata)
     if(!this.state.userdata.length)

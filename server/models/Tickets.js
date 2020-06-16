@@ -8,7 +8,6 @@ const ticketSchema = new mongoose.Schema({
     name: {
       type: String,
       unique: true,
-      required: true,
     },
     ticket: {
         type: String,

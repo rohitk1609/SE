@@ -106,4 +106,21 @@ const forms = async (req, res) => {
         });
 }
 
-module.exports = { users, login, register, forms, float, getusers }
+const create_ticket = async (req, res) => {
+    console.log("mak");
+    console.log(req.body);
+    var tic_name = req.body.info.user + req.body.info.form_data.name;
+    Ticket.create({
+        ticket: tic_name,floated_user:req.body.info.user,status:0,child: req.body.info.form_data,
+        current_holder: req.body.info.target,close:req.body.info.target,
+    }).then((forms) => {
+        
+        return { out: "sucess" };
+    }).catch((error) => {
+        return { error };
+    });
+}
+
+
+
+module.exports = { users, login, register, forms, float, getusers, create_ticket }

@@ -110,13 +110,25 @@ const create_ticket = async (req, res) => {
     console.log("mak");
     console.log(req.body);
     var tic_name = req.body.info.user + req.body.info.form_data.name;
+    var flow = req.body.info.form_data.workflow[0];
+    flow.person = req.body.info.target_email;
+    console.log(flow)
     Ticket.create({
         ticket: tic_name,floated_user:req.body.info.user,status:0,child: req.body.info.form_data,
-        current_holder: req.body.info.target,close:req.body.info.target,
+        current_holder: req.body.info.target,close:false,
     }).then((forms) => {
-        
+
+        console.log("user",forms);
+        console.log("id",forms._id);
+        User.findOneAndUpdate({_id: forms.floated_user},{$push: { intickets: forms._id }}).then((res) => {
+            
+            console.log(res)
+            return { out: "sucess"}; 
+
+        })
         return { out: "sucess" };
     }).catch((error) => {
+        console.log(error);
         return { error };
     });
 }

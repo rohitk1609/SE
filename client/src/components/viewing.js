@@ -49,45 +49,31 @@ export default class FormBuilder extends Component {
     var form_obj = JSON.parse(localStorage.getItem("form_view"))
     form_obj.form = this.state.formBuilder.userData
     console.log(form_obj)
+    var userid = JSON.parse(localStorage.getItem("user_id"))
+    console.log(userid.user._id)
     var info = {
-      user: localStorage.getItem("user"),
+      user: userid.user._id,
+      user_email: localStorage.getItem("role"),
       form_data: form_obj,
-      target: this.state.selecteduser
+      target: this.state.selecteduser._id,
+      target_email: this.state.selecteduser.email
     }
-    axios.post('http://localhost:8000/forms',{info})
+    axios.post('http://localhost:8000/create_ticket',{info})
           .then(res => {
-            console.log(res);
-            this.setState({
-              flag: true
-            })
+            console.log("fghjk")
+            console.log("fghj",res);
+            
           }
           )
           .catch (error => {
           alert(error.response);
           });
+          this.setState({
+            flag: true
+          })
   }
 
-  saveform = (e) => {
-    e.preventDefault();
-    const data = (this.state.formBuilder).actions.getData('json',true)
-    console.log(data)
-    axios.post('http://localhost:8000/forms',{data})
-          .then(res => {
-            console.log(res);
-            if (res.data.error) {
-              alert("form already exists")
-            }
-            if (res.data.out) {
-              alert("sucess");
-            }
-          }
-          )
-          .catch (error => {
-          alert(error.response);
-          });
-    alert("the form is saved")
-  }
-
+  
   getlist = () => {
     var list = JSON.parse(localStorage.getItem("form_view")).workflow;
     console.log(list[0].user);
@@ -149,7 +135,7 @@ export default class FormBuilder extends Component {
         onChange={this.setapproveuser}
         required>
         {this.state.userdata.map((option) => (
-            <MenuItem key={option.email} value={option.email}>
+            <MenuItem value={option}>
                 {option.email}
             </MenuItem>
         ))}

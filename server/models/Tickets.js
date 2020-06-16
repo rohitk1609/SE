@@ -7,7 +7,6 @@ const form_schema = form_obj.schema;
 const ticketSchema = new mongoose.Schema({
     name: {
       type: String,
-      unique: true,
     },
     ticket: {
         type: String,

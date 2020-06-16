@@ -20,6 +20,8 @@ export default class login extends Component {
       .then((res) => {
         if (res.data.user) {
           console.log(res.data.user.role,"hurray")
+          console.log(res.data);
+          localStorage.setItem("user_id",JSON.stringify(res.data));
           localStorage.setItem("usertoken", res.data.user);
           localStorage.setItem("role",res.data.user.role)
           localStorage.setItem("flag", true);

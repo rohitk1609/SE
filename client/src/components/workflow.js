@@ -196,7 +196,7 @@ class Workflow extends Component {
         console.log(typeof(data))
         var obj = JSON.parse(data);
         //console.log(obj)
-        var title = obj[0].label;
+        var title = localStorage.getItem("form_name");
         console.log("title",title);
         console.log('workflow is ',this.state.workkflow_list)
 

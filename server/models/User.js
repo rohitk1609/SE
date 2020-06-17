@@ -27,10 +27,10 @@ const UserSchema = new mongoose.Schema({
      value: [String]
    },
    intickets : [{
-      type: mongoose.Schema.Types.ObjectId 
+    type: mongoose.Schema.Types.ObjectId , ref : "Ticket"
    }],
    outtickets : [{
-     type: mongoose.Schema.Types.ObjectId 
+     type: mongoose.Schema.Types.ObjectId , ref : "Ticket"
   }]
 
 

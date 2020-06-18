@@ -113,6 +113,7 @@ const create_ticket = async (req, res) => {
     var flow = req.body.info.form_data.workflow[0];
     flow.person = req.body.info.target_email;
     console.log(flow)
+    req.body.info.form_data.workflow[0] = flow;
     Ticket.create({
         ticket: tic_name,floated_user:req.body.info.user,status:0,child: req.body.info.form_data,
         current_holder: req.body.info.target,close:false,
@@ -122,9 +123,11 @@ const create_ticket = async (req, res) => {
         console.log("id",forms._id);
         User.findOneAndUpdate({_id: forms.floated_user},{$push: { intickets: forms._id }}).then((res) => {
             
+            User.findOneAndUpdate({_id: forms.target},{$push: { outtickets: forms._id }}).then((re)=>{
+                console.log(re);
+            })
             console.log(res)
             return { out: "sucess"}; 
-
         })
         return { out: "sucess" };
     }).catch((error) => {
